@@ -1,0 +1,7 @@
+---
+- name: Basic Nginx Setup
+  hosts: webserver
+  become: true
+
+  roles:
+    - nginx

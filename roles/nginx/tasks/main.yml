@@ -1,0 +1,27 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Create Static File Directory
+  file:
+    path: "{{ static_directory }}"
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+
+- name: Add a Test Static File
+  copy:
+    content: "{{ static_file_content }}"
+    dest: "{{ static_directory }}/index.html"
+    owner: www-data
+    group: www-data
+    mode: '0644'
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted

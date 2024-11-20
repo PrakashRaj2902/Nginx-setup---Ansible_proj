@@ -1,0 +1,3 @@
+---
+static_directory "/var/www/html/static"
+static_file_content: "Hello from Ansible! This is a basic Nginx setup.\n"
